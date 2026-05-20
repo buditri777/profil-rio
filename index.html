@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Rio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+        .header::before {
+            content: '🎣';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .photo-wrapper {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4dd0e1;
+            box-shadow: 0 8px 32px rgba(77, 208, 225, 0.3);
+        }
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: #4dd0e1;
+            font-weight: 500;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            color: #4dd0e1;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card h2 .icon { font-size: 1.5rem; }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .info-item {
+            padding: 16px;
+            background: rgba(77, 208, 225, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid #4dd0e1;
+        }
+        .info-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #80cbc4;
+            margin-bottom: 4px;
+        }
+        .info-item .value {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Project */
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4dd0e1, #26a69a);
+            color: #0f2027;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .project-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .project-desc {
+            color: #b0bec5;
+            line-height: 1.6;
+        }
+
+        /* Partner */
+        .partner-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(77, 208, 225, 0.08);
+            border-radius: 12px;
+        }
+        .partner-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4dd0e1, #26a69a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #0f2027;
+        }
+        .partner-info .name {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .partner-info .role {
+            font-size: 0.9rem;
+            color: #80cbc4;
+        }
+
+        /* Contact Button */
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4dd0e1, #26a69a);
+            color: #0f2027;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(77, 208, 225, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #546e7a;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .card { padding: 24px; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="photo-wrapper">
+                <img src="assets/rio-photo.jpg" alt="Foto Rio">
+            </div>
+            <h1>Rio</h1>
+            <p>Mahasiswa &bull; Peneliti &bull; Pemancing</p>
+        </div>
+
+        <!-- About -->
+        <div class="card">
+            <h2><span class="icon">👤</span> Tentang Saya</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">Nama</div>
+                    <div class="value">Rio</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Alamat</div>
+                    <div class="value">Wonosari</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Jenis Kelamin</div>
+                    <div class="value">Laki-laki</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Hobi</div>
+                    <div class="value">🎣 Mancing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project -->
+        <div class="card">
+            <h2><span class="icon">📋</span> Proyek</h2>
+            <span class="project-badge">LKTI</span>
+            <div class="project-title">Pengembangan Usaha Telur Bebek</div>
+            <p class="project-desc">
+                Lomba Karya Tulis Ilmiah (LKTI) yang mengkaji pengembangan usaha telur bebek 
+                sebagai peluang wirausaha yang menjanjikan dengan pendekatan inovatif dan berkelanjutan.
+            </p>
+        </div>
+
+        <!-- Partner -->
+        <div class="card">
+            <h2><span class="icon">🤝</span> Partner</h2>
+            <div class="partner-box">
+                <div class="partner-avatar">E</div>
+                <div class="partner-info">
+                    <div class="name">Erik</div>
+                    <div class="role">Partner Proyek LKTI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="card" style="text-align: center;">
+            <h2 style="justify-content: center;"><span class="icon">📞</span> Kontak</h2>
+            <a href="https://wa.me/6285864479708" class="contact-btn" target="_blank">
+                💬 WhatsApp: 085864479708
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2026 Rio &bull; Wonosari
+        </div>
+    </div>
+</body>
+</html>
