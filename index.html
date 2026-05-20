@@ -3,636 +3,1168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rio | Profil</title>
+    <title>Rio Enterprise | Inovasi Usaha Telur Bebek</title>
+    <meta name="description" content="Rio Enterprise - Pengembangan Usaha Telur Bebek Berbasis Inovasi dan Riset Ilmiah">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;900&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        :root {
+            --primary: #1a3a52;
+            --secondary: #c9a961;
+            --accent: #2d5f8a;
+            --dark: #0d1f2d;
+            --light: #f5f1e8;
+            --gray-light: #e8e4db;
+            --text-dark: #1a1a1a;
+            --text-gray: #5a6772;
+        }
+
+        html { scroll-behavior: smooth; }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0a0e1a;
-            color: #e0e0e0;
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 0;
-            overflow: hidden;
+        /* Top Bar */
+        .topbar {
+            background: var(--dark);
+            color: var(--gray-light);
+            padding: 8px 0;
+            font-size: 0.8rem;
         }
-        .bg-animation .wave {
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 200px;
-            background: linear-gradient(90deg, #0ea5e9, #06b6d4, #14b8a6, #0ea5e9);
-            opacity: 0.05;
-            border-radius: 40%;
-            animation: wave 8s linear infinite;
-        }
-        .bg-animation .wave:nth-child(2) {
-            opacity: 0.03;
-            animation-duration: 12s;
-            bottom: -20px;
-            height: 250px;
-        }
-        .bg-animation .wave:nth-child(3) {
-            opacity: 0.02;
-            animation-duration: 16s;
-            bottom: -40px;
-            height: 300px;
-        }
-        @keyframes wave {
-            0% { transform: translateX(0) rotate(0deg); }
-            100% { transform: translateX(-50%) rotate(360deg); }
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .particle {
-            position: absolute;
-            width: 4px; height: 4px;
-            background: #06b6d4;
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 6s ease-in-out infinite;
-        }
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 25%; animation-delay: 1s; }
-        .particle:nth-child(3) { left: 40%; animation-delay: 2s; }
-        .particle:nth-child(4) { left: 55%; animation-delay: 3s; }
-        .particle:nth-child(5) { left: 70%; animation-delay: 4s; }
-        .particle:nth-child(6) { left: 85%; animation-delay: 5s; }
-        .particle:nth-child(7) { left: 15%; animation-delay: 0.5s; }
-        .particle:nth-child(8) { left: 60%; animation-delay: 2.5s; }
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-        }
-
-        /* Main Content */
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
+        .topbar-content {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
+        .topbar-info {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .topbar-info span { display: flex; align-items: center; gap: 6px; }
 
         /* Navigation */
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            padding: 20px;
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(10, 14, 26, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            z-index: 1000;
+            padding: 16px 0;
         }
-        .nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            position: relative;
-        }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 2px;
-            background: #06b6d4;
-            transition: width 0.3s;
-        }
-        .nav a:hover { color: #06b6d4; }
-        .nav a:hover::after { width: 100%; }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
-        }
-        .photo-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 32px;
-        }
-        .photo-ring {
-            position: absolute;
-            top: -8px; left: -8px;
-            width: 216px; height: 216px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: #06b6d4;
-            border-right-color: #14b8a6;
-            animation: spin 4s linear infinite;
-        }
-        .photo-ring-2 {
-            position: absolute;
-            top: -14px; left: -14px;
-            width: 228px; height: 228px;
-            border-radius: 50%;
-            border: 1px solid transparent;
-            border-bottom-color: #0ea5e9;
-            border-left-color: #06b6d4;
-            animation: spin 6s linear infinite reverse;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .photo-wrapper {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 0 40px rgba(6, 182, 212, 0.3), 0 0 80px rgba(6, 182, 212, 0.1);
-        }
-        .photo-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .photo-wrapper:hover img { transform: scale(1.1); }
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff, #06b6d4, #14b8a6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-        .hero .tagline {
-            font-size: 1.1rem;
-            color: #64748b;
-            font-weight: 300;
-            margin-bottom: 24px;
-        }
-        .hero .tagline span {
-            color: #06b6d4;
-            font-weight: 500;
-        }
-        .status-badge {
-            display: inline-flex;
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            color: #06b6d4;
         }
-        .status-dot {
-            width: 8px; height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.5); }
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 24px;
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
-        .section-title .line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(6, 182, 212, 0.5), transparent);
-        }
-
-        /* Cards */
-        .card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(6, 182, 212, 0.1);
-            border-radius: 20px;
-            padding: 36px;
-            margin-bottom: 28px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(6, 182, 212, 0.3);
-            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.1);
-        }
-        .card:hover::before { opacity: 1; }
-
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            position: relative;
-        }
-        .info-item {
-            padding: 20px;
-            background: rgba(6, 182, 212, 0.03);
-            border-radius: 14px;
-            border: 1px solid rgba(6, 182, 212, 0.08);
-            transition: all 0.3s;
-        }
-        .info-item:hover {
-            background: rgba(6, 182, 212, 0.08);
-            border-color: rgba(6, 182, 212, 0.2);
-            transform: translateY(-2px);
-        }
-        .info-item .icon-box {
-            width: 40px; height: 40px;
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 10px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(20, 184, 166, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            color: var(--secondary);
+            font-weight: 900;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
         }
-        .info-item .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #64748b;
-            margin-bottom: 4px;
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
         }
-        .info-item .value {
-            font-size: 1.05rem;
-            color: #f1f5f9;
-            font-weight: 600;
+        .logo-text span { color: var(--secondary); }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
         }
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 6px;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            color: white !important;
+        }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
-        /* Project Card */
-        .project-card {
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--accent) 100%);
+            color: white;
+            padding: 100px 24px 120px;
             position: relative;
             overflow: hidden;
         }
-        .project-header {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 60%; height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(201, 169, 97, 0.15), transparent 60%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 0;
+            width: 100%; height: 100px;
+            background: white;
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 169, 97, 0.15);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            color: var(--secondary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero h1 span {
+            color: var(--secondary);
+            font-style: italic;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 36px;
+            max-width: 540px;
+            line-height: 1.8;
+        }
+        .hero-buttons {
             display: flex;
-            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        .btn-primary:hover {
+            background: #d4b673;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(201, 169, 97, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+        .hero-image {
+            position: relative;
+        }
+        .hero-photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px;
+            width: 100%; height: 100%;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            z-index: 0;
+        }
+        .hero-photo-frame img {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-stat .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            line-height: 1;
+        }
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 6px;
+        }
+
+        /* Section */
+        section { padding: 100px 24px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            position: relative;
+            padding: 0 30px;
+        }
+        .section-tag::before, .section-tag::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px; height: 1px;
+            background: var(--secondary);
+        }
+        .section-tag::before { left: 0; }
+        .section-tag::after { right: 0; }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 16px auto 0;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(26, 58, 82, 0.2);
+        }
+        .about-image img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+        }
+        .about-image-tag {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 16px 22px;
+            border-radius: 6px;
+            font-family: 'Playfair Display', serif;
+        }
+        .about-image-tag .num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .about-image-tag .txt {
+            font-size: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--primary);
+            line-height: 1.2;
             margin-bottom: 20px;
         }
-        .project-icon {
-            width: 60px; height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .about-feature .check {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Vision Mission */
+        .vm-section {
+            background: var(--light);
+        }
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .vm-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(26, 58, 82, 0.08);
+            position: relative;
+            transition: transform 0.4s;
+        }
+        .vm-card:hover { transform: translateY(-8px); }
+        .vm-icon {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            flex-shrink: 0;
+            color: var(--secondary);
+            margin-bottom: 24px;
         }
-        .project-meta .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-            color: #0a0e1a;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+        .vm-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 14px;
         }
-        .project-meta h3 {
-            font-size: 1.3rem;
-            color: #f1f5f9;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-        .project-desc {
-            color: #94a3b8;
+        .vm-card p {
+            color: var(--text-gray);
             line-height: 1.8;
-            font-size: 0.95rem;
         }
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+        .vm-card ul {
+            list-style: none;
+            margin-top: 14px;
         }
-        .project-tags span {
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            color: #06b6d4;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+        .vm-card ul li {
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
-
-        /* Partner */
-        .partner-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px;
-            background: rgba(6, 182, 212, 0.03);
-            border-radius: 16px;
-            border: 1px solid rgba(6, 182, 212, 0.1);
-            transition: all 0.3s;
-        }
-        .partner-card:hover {
-            background: rgba(6, 182, 212, 0.08);
-            transform: translateX(8px);
-        }
-        .partner-avatar {
-            width: 56px; height: 56px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #ffffff;
-            flex-shrink: 0;
-        }
-        .partner-info .name {
-            font-size: 1.15rem;
-            color: #f1f5f9;
-            font-weight: 600;
-        }
-        .partner-info .role {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 2px;
+        .vm-card ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 0.7rem;
+            top: 6px;
         }
 
-        /* Contact */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
         }
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .service-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-light);
+            transition: all 0.4s;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .contact-btn.whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: #ffffff;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
         }
-        .contact-btn.phone {
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            color: #06b6d4;
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(26, 58, 82, 0.12);
+            border-color: transparent;
         }
-        .contact-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 80px; height: 80px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            transition: background 0.3s;
         }
-        .contact-btn.whatsapp:hover {
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+        .service-card:hover .service-icon {
+            background: var(--secondary);
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* Team */
+        .team-section {
+            background: var(--light);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .team-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(26, 58, 82, 0.08);
+            transition: transform 0.4s;
+        }
+        .team-card:hover { transform: translateY(-8px); }
+        .team-image {
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-image .initials {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        .team-info {
+            padding: 28px;
+            text-align: center;
+        }
+        .team-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .team-info .position {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .team-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Project Showcase */
+        .project-showcase {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 100px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-showcase .section-title { color: white; }
+        .project-showcase .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+        .project-detail {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 12px;
+            padding: 50px;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .project-icon-big {
+            width: 120px; height: 120px;
+            background: linear-gradient(135deg, var(--secondary), #d4b673);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+        .project-detail h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .project-detail .project-cat {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .project-detail p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .project-stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .project-stat {
+            border-left: 2px solid var(--secondary);
+            padding-left: 16px;
+        }
+        .project-stat .ps-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .project-stat .ps-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--light);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(26, 58, 82, 0.08);
+        }
+        .contact-info-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .contact-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .contact-item .ci-icon {
+            width: 44px; height: 44px;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-item .ci-content .ci-label {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .contact-item .ci-content .ci-value {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-item .ci-content a:hover { color: var(--secondary); }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            padding: 50px 40px;
+            color: white;
+            text-align: center;
+        }
+        .cta-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 14px;
+        }
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Footer */
         .footer {
-            text-align: center;
-            padding: 60px 20px 30px;
-            color: #334155;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 24px 30px;
         }
-        .footer .heart { color: #06b6d4; }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-brand h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .footer-brand p {
+            line-height: 1.7;
+            font-size: 0.9rem;
+            max-width: 360px;
+        }
+        .footer-col h5 {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--secondary); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
 
-        /* Scroll Animations */
-        .fade-in {
+        /* Animations */
+        .fade-up {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* Responsive */
+        /* Mobile */
+        @media (max-width: 968px) {
+            .hero-content, .about-grid, .vm-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .project-detail { grid-template-columns: 1fr; text-align: center; }
+            .project-icon-big { margin: 0 auto; }
+            .project-stats { justify-content: center; }
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2rem; }
+        }
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2.5rem; }
-            .info-grid { grid-template-columns: 1fr; }
-            .card { padding: 24px; }
-            .nav { gap: 16px; }
-            .nav a { font-size: 0.75rem; }
-            .project-header { flex-direction: column; }
-            .contact-grid { flex-direction: column; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .nav-links.active {
+                display: flex;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            .services-grid, .team-grid, .footer-grid, .about-features { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr; gap: 16px; }
+            .topbar-info { gap: 12px; font-size: 0.7rem; }
+            .hero { padding: 60px 24px 80px; }
+            section { padding: 60px 24px; }
         }
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="bg-animation">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="#about">Tentang</a>
-        <a href="#project">Proyek</a>
-        <a href="#team">Tim</a>
-        <a href="#contact">Kontak</a>
-    </nav>
-
-    <div class="container">
-        <!-- Hero -->
-        <section class="hero">
-            <div class="photo-container">
-                <div class="photo-ring"></div>
-                <div class="photo-ring-2"></div>
-                <div class="photo-wrapper">
-                    <img src="assets/rio-photo.jpg" alt="Foto Rio">
-                </div>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <div class="topbar-info">
+                <span>📍 Wonosari, Yogyakarta</span>
+                <span>📞 +62 858-6447-9708</span>
             </div>
-            <h1>Rio</h1>
-            <p class="tagline">Mahasiswa &bull; Peneliti &bull; <span>Pemancing</span></p>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                Aktif mengerjakan LKTI
+            <div class="topbar-info">
+                <span>🕐 Senin - Sabtu, 08:00 - 17:00 WIB</span>
             </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="fade-in">
-            <div class="section-title">
-                <span>👤 Tentang Saya</span>
-                <div class="line"></div>
-            </div>
-            <div class="card">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="icon-box">📛</div>
-                        <div class="label">Nama</div>
-                        <div class="value">Rio</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="icon-box">📍</div>
-                        <div class="label">Alamat</div>
-                        <div class="value">Wonosari</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="icon-box">👨</div>
-                        <div class="label">Jenis Kelamin</div>
-                        <div class="value">Laki-laki</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="icon-box">🎣</div>
-                        <div class="label">Hobi</div>
-                        <div class="value">Mancing</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project -->
-        <section id="project" class="fade-in">
-            <div class="section-title">
-                <span>🚀 Proyek</span>
-                <div class="line"></div>
-            </div>
-            <div class="card project-card">
-                <div class="project-header">
-                    <div class="project-icon">🥚</div>
-                    <div class="project-meta">
-                        <div class="badge">LKTI 2026</div>
-                        <h3>Pengembangan Usaha Telur Bebek</h3>
-                    </div>
-                </div>
-                <p class="project-desc">
-                    Karya tulis ilmiah yang mengkaji potensi dan strategi pengembangan usaha telur bebek 
-                    sebagai peluang wirausaha yang menjanjikan. Penelitian ini menggunakan pendekatan inovatif 
-                    untuk meningkatkan produktivitas dan nilai ekonomi produk telur bebek di tingkat lokal.
-                </p>
-                <div class="project-tags">
-                    <span>Kewirausahaan</span>
-                    <span>Peternakan</span>
-                    <span>Telur Bebek</span>
-                    <span>Inovasi</span>
-                    <span>LKTI</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Team -->
-        <section id="team" class="fade-in">
-            <div class="section-title">
-                <span>🤝 Tim</span>
-                <div class="line"></div>
-            </div>
-            <div class="card">
-                <div class="partner-card">
-                    <div class="partner-avatar">E</div>
-                    <div class="partner-info">
-                        <div class="name">Erik</div>
-                        <div class="role">Partner Proyek LKTI</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="fade-in">
-            <div class="section-title">
-                <span>📬 Kontak</span>
-                <div class="line"></div>
-            </div>
-            <div class="card" style="text-align: center;">
-                <p style="color: #64748b; margin-bottom: 24px;">Hubungi saya untuk kolaborasi atau diskusi</p>
-                <div class="contact-grid">
-                    <a href="https://wa.me/6285864479708" class="contact-btn whatsapp" target="_blank">
-                        💬 WhatsApp
-                    </a>
-                    <a href="tel:085864479708" class="contact-btn phone">
-                        📞 085864479708
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <div class="footer">
-            Made with <span class="heart">♥</span> &bull; Rio &copy; 2026 &bull; Wonosari
         </div>
     </div>
 
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">R</div>
+                <div class="logo-text">Rio<span>Enterprise</span></div>
+            </a>
+            <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+            <div class="nav-links">
+                <a href="#about">Tentang</a>
+                <a href="#vision">Visi & Misi</a>
+                <a href="#services">Layanan</a>
+                <a href="#project">Proyek</a>
+                <a href="#team">Tim</a>
+                <a href="#contact" class="nav-cta">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <span class="hero-tag">★ Inovasi Wirausaha Mahasiswa</span>
+                <h1>Membangun Masa Depan Lewat <span>Inovasi Telur Bebek</span></h1>
+                <p>Rio Enterprise hadir sebagai inisiatif pengembangan usaha telur bebek berbasis riset ilmiah. Kami berkomitmen mendukung kemandirian ekonomi melalui inovasi peternakan modern dan strategi bisnis berkelanjutan.</p>
+                <div class="hero-buttons">
+                    <a href="#project" class="btn btn-primary">Lihat Proyek →</a>
+                    <a href="https://wa.me/6285864479708" class="btn btn-outline" target="_blank">Konsultasi Gratis</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="number">1</div>
+                        <div class="label">Proyek LKTI</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number">2</div>
+                        <div class="label">Tim Inti</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number">100%</div>
+                        <div class="label">Komitmen</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-photo-frame">
+                    <img src="assets/rio-photo.jpg" alt="Rio - Founder Rio Enterprise">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-up">
+                    <img src="assets/rio-photo.jpg" alt="Tentang Rio Enterprise">
+                    <div class="about-image-tag">
+                        <div class="num">2026</div>
+                        <div class="txt">Tahun Berdiri</div>
+                    </div>
+                </div>
+                <div class="about-content fade-up">
+                    <span class="section-tag" style="text-align: left; padding-left: 0;">Tentang Kami</span>
+                    <h2>Mengembangkan Potensi Lokal dengan Pendekatan Ilmiah</h2>
+                    <p>Rio Enterprise adalah inisiatif wirausaha yang dipimpin oleh <strong>Rio</strong>, mahasiswa asal Wonosari yang memiliki passion di bidang peternakan dan kewirausahaan. Berangkat dari potensi lokal yang melimpah, kami menggali peluang bisnis telur bebek dengan pendekatan riset dan inovasi.</p>
+                    <p>Melalui proyek Lomba Karya Tulis Ilmiah (LKTI), kami merumuskan strategi pengembangan usaha yang berkelanjutan, modern, dan dapat direplikasi oleh pelaku UMKM lainnya.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="check">✓</div>
+                            Berbasis Riset
+                        </div>
+                        <div class="about-feature">
+                            <div class="check">✓</div>
+                            Inovatif
+                        </div>
+                        <div class="about-feature">
+                            <div class="check">✓</div>
+                            Berkelanjutan
+                        </div>
+                        <div class="about-feature">
+                            <div class="check">✓</div>
+                            Dampak Lokal
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section id="vision" class="vm-section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Visi & Misi</span>
+                <h2 class="section-title">Komitmen Kami untuk Masa Depan</h2>
+                <p class="section-subtitle">Landasan filosofis yang menggerakkan setiap langkah Rio Enterprise dalam membangun usaha berdaya saing.</p>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card fade-up">
+                    <div class="vm-icon">🎯</div>
+                    <h3>Visi</h3>
+                    <p>Menjadi pelopor pengembangan usaha telur bebek berbasis inovasi dan riset ilmiah yang memberi dampak positif bagi kemandirian ekonomi masyarakat lokal Wonosari dan sekitarnya.</p>
+                </div>
+                <div class="vm-card fade-up">
+                    <div class="vm-icon">⚡</div>
+                    <h3>Misi</h3>
+                    <ul>
+                        <li>Mengembangkan model usaha telur bebek yang inovatif dan berkelanjutan.</li>
+                        <li>Memanfaatkan riset ilmiah untuk meningkatkan produktivitas peternakan.</li>
+                        <li>Memberdayakan masyarakat lokal melalui edukasi dan pendampingan usaha.</li>
+                        <li>Membangun jaringan kolaborasi dengan akademisi dan pelaku industri.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Layanan Kami</span>
+                <h2 class="section-title">Apa yang Kami Tawarkan</h2>
+                <p class="section-subtitle">Berbagai layanan strategis untuk mendukung pengembangan usaha telur bebek dari hulu ke hilir.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-up">
+                    <div class="service-icon">🥚</div>
+                    <h3>Produksi Telur Bebek</h3>
+                    <p>Manajemen produksi telur bebek berkualitas tinggi dengan standar peternakan modern dan pakan optimal.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">📊</div>
+                    <h3>Riset & Pengembangan</h3>
+                    <p>Studi kelayakan, analisis pasar, dan inovasi produk turunan untuk meningkatkan nilai ekonomi telur bebek.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">🤝</div>
+                    <h3>Kemitraan UMKM</h3>
+                    <p>Pendampingan dan kerjasama dengan peternak lokal untuk membentuk ekosistem usaha yang kuat dan terintegrasi.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">📚</div>
+                    <h3>Edukasi & Pelatihan</h3>
+                    <p>Workshop, pelatihan, dan transfer pengetahuan tentang peternakan bebek dan strategi wirausaha modern.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">🌱</div>
+                    <h3>Praktik Berkelanjutan</h3>
+                    <p>Penerapan prinsip ramah lingkungan dalam setiap tahap produksi untuk menjaga ekosistem peternakan.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">📈</div>
+                    <h3>Strategi Pemasaran</h3>
+                    <p>Pengembangan branding, pemasaran digital, dan distribusi produk untuk menjangkau pasar lebih luas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project -->
+    <section id="project" class="project-showcase">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Proyek Unggulan</span>
+                <h2 class="section-title">Karya Tulis Ilmiah Strategis</h2>
+                <p class="section-subtitle">Inisiatif riset utama yang menjadi fondasi pengembangan Rio Enterprise.</p>
+            </div>
+            <div class="project-detail fade-up">
+                <div class="project-icon-big">🥚</div>
+                <div>
+                    <div class="project-cat">LKTI 2026 — Karya Tulis Ilmiah</div>
+                    <h3>Pengembangan Usaha Telur Bebek</h3>
+                    <p>Penelitian komprehensif tentang potensi, strategi, dan inovasi dalam pengembangan usaha telur bebek skala UMKM. Mengkaji aspek produksi, manajemen, pemasaran, hingga praktik berkelanjutan dengan pendekatan ilmiah dan implementatif.</p>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="ps-num">2026</div>
+                            <div class="ps-label">Tahun</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="ps-num">2</div>
+                            <div class="ps-label">Anggota Tim</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="ps-num">UMKM</div>
+                            <div class="ps-label">Target</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="ps-num">Riset</div>
+                            <div class="ps-label">Pendekatan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Tim Kami</span>
+                <h2 class="section-title">Orang-Orang di Balik Rio Enterprise</h2>
+                <p class="section-subtitle">Kolaborasi tim muda yang berdedikasi membangun visi bersama.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card fade-up">
+                    <div class="team-image">
+                        <img src="assets/rio-photo.jpg" alt="Rio">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rio</h3>
+                        <div class="position">Founder & Lead Researcher</div>
+                        <p>Penggagas dan pemimpin proyek Rio Enterprise. Berasal dari Wonosari dengan passion di bidang riset dan kewirausahaan.</p>
+                    </div>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-image">
+                        <div class="initials">E</div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Erik</h3>
+                        <div class="position">Co-Founder & Partner</div>
+                        <p>Partner strategis Rio Enterprise yang berkolaborasi dalam riset dan pengembangan proyek LKTI Telur Bebek.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Hubungi Kami</span>
+                <h2 class="section-title">Mari Berkolaborasi</h2>
+                <p class="section-subtitle">Tertarik dengan proyek kami atau ingin menjalin kemitraan? Jangan ragu untuk menghubungi.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-box fade-up">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <div class="ci-icon">📞</div>
+                        <div class="ci-content">
+                            <div class="ci-label">Telepon</div>
+                            <a href="tel:085864479708" class="ci-value">+62 858-6447-9708</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">💬</div>
+                        <div class="ci-content">
+                            <div class="ci-label">WhatsApp</div>
+                            <a href="https://wa.me/6285864479708" target="_blank" class="ci-value">+62 858-6447-9708</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">📍</div>
+                        <div class="ci-content">
+                            <div class="ci-label">Lokasi</div>
+                            <div class="ci-value">Wonosari, Yogyakarta</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">🕐</div>
+                        <div class="ci-content">
+                            <div class="ci-label">Jam Operasional</div>
+                            <div class="ci-value">Senin - Sabtu, 08:00 - 17:00 WIB</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-box fade-up">
+                    <h3>Siap Memulai Kolaborasi?</h3>
+                    <p>Tim kami terbuka untuk diskusi, konsultasi, atau peluang kemitraan. Hubungi kami via WhatsApp untuk respon cepat.</p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/6285864479708?text=Halo%20Rio%2C%20saya%20tertarik%20dengan%20proyek%20Anda" class="btn btn-primary" target="_blank">💬 Chat WhatsApp</a>
+                        <a href="tel:085864479708" class="btn btn-outline">📞 Telepon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>Rio<span style="color: var(--secondary);">Enterprise</span></h4>
+                <p>Membangun masa depan kemandirian ekonomi melalui inovasi pengembangan usaha telur bebek berbasis riset ilmiah dan praktik berkelanjutan.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Tautan</h5>
+                <ul>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#vision">Visi & Misi</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#project">Proyek</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Kontak</h5>
+                <ul>
+                    <li><a href="tel:085864479708">📞 085864479708</a></li>
+                    <li><a href="https://wa.me/6285864479708">💬 WhatsApp</a></li>
+                    <li><a href="#">📍 Wonosari</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Rio Enterprise. Hak Cipta Dilindungi. Dibuat dengan ❤️ di Wonosari.
+        </div>
+    </footer>
+
     <script>
-        // Scroll Animation
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth Scroll
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
             });
         });
     </script>
